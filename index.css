@@ -1,98 +1,429 @@
-/* скрываем чекбокс */
-#menu__toggle {
-    opacity: 0;
-  }
-  /* стилизуем кнопку */
-  .menu__btn {
-    display: flex; /* используем flex для центрирования содержимого */
-    align-items: center;  /* центрируем содержимое кнопки */
-    position: fixed;
-    top: 20px;
-    left: 20px;
-    width: 26px;
-    height: 26px;
-    cursor: pointer;
-    z-index: 1;
-  }
-  /* добавляем "гамбургер" */
-  .menu__btn > span,
-  .menu__btn > span::before,
-  .menu__btn > span::after {
-    display: block;
-    position: absolute;
-    width: 100%;
-    height: 2px;
-    background-color: #616161;
-  }
-  .menu__btn > span::before {
-    content: '';
-    top: -8px;
-  }
-  .menu__btn > span::after {
-    content: '';
-    top: 8px;
-  }
-  .menu__box {
-    display: block;
-    position: fixed;
-    visibility: hidden;
-    top: 0;
-    left: -100%;
-    width: 300px;
-    height: 100%;
-    margin: 0;
-    padding: 80px 0;
-    list-style: none;
-    text-align: center;
-    background-color: #ECEFF1;
-    box-shadow: 1px 0px 6px rgba(0, 0, 0, .2);
-  }
-  /* элементы меню */
-  .menu__item {
-    display: block;
-    padding: 12px 24px;
-    color: #333;
-    font-family: 'Roboto', sans-serif;
-    font-size: 20px;
-    font-weight: 600;
-    text-decoration: none;
-  }
-  .menu__item:hover {
-    background-color: #CFD8DC;
-  }
-
-  #menu__toggle:checked ~ .menu__btn > span {
-    transform: rotate(45deg);
-  }
-  #menu__toggle:checked ~ .menu__btn > span::before {
-    top: 0;
-    transform: rotate(0);
-  }
-  #menu__toggle:checked ~ .menu__btn > span::after {
-    top: 0;
-    transform: rotate(90deg);
-  }
-  #menu__toggle:checked ~ .menu__box {
-    visibility: visible;
-    left: 0;
-  }
-  .menu__btn > span,
-.menu__btn > span::before,
-.menu__btn > span::after {
-  transition-duration: .25s;
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Poppins", sans-serif;
 }
-.menu__box {
-  transition-duration: .25s;
+#navbar {
+  width: 100%;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
 }
-.menu__item {
-  transition-duration: .25s;
+.logo {
+  width: 15%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
 }
-
-.form-inp{
-  border: 2px solid rgba(255, 252, 252, 0.014);
+.text-instagram {
+  font-size: 22px;
+}
+.search-box {
+  background: #f6f5f5;
+  padding: 10px 0;
   border-radius: 40px;
+  height: 15px;
+  display: flex;
+  align-items: center;
 }
-.form-btn{
-    border: 2px solid rgb(255, 255, 255);
-    border-radius: 40px;
+.search-btn {
+  color: #022417;
+  float: right;
+  width: 33px;
+  height: 33px;
+  border-radius: 50%;
+  background-color: #d7d6d6;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+}
+.search-txt {
+  border: none;
+  background: none;
+  outline: none;
+  float: left;
+  padding: 0;
+  color: rgb(6, 6, 6);
+  font-size: 16px;
+  transition: 0.4s;
+  line-height: 40px;
+  width: 240px;
+  transition: 0.4s;
+  padding-left: 7px;
+}
+.filter {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 15%;
+  height: 100%;
+}
+#filter-post {
+  width: 20%;
+  cursor: pointer;
+}
+#close-modal {
+  width: 10%;
+  cursor: pointer;
+}
+.main-modal {
+  position: fixed;
+  top: 0;
+  background-color: rgba(9, 9, 9, 0.534);
+  width: 100%;
+  height: 100%;
+  display: none;
+}
+.modal-push {
+  width: 25%;
+  height: 230px;
+  display: flex;
+  flex-direction: column;
+  margin: 200px auto 0;
+  background-color: #fefdfd;
+  border-radius: 10px;
+}
+.close-btn {
+  width: 100%;
+  height: 15%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid rgba(98, 98, 98, 0.711);
+}
+.close-btn div {
+  margin-right: 5px;
+}
+.info-push {
+  width: 100%;
+  height: 70%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+}
+.info-push input {
+  border-radius: 5px;
+}
+.save-btn {
+  width: 100%;
+  height: 15%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  border-top: 1px solid rgba(98, 98, 98, 0.711);
+}
+.save-btn button {
+  width: 20%;
+  height: 90%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #96caf4;
+  border-radius: 5px;
+  margin-right: 10px;
+  border: none;
+}
+#section-read {
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  background: #eecda3;
+ 
+  animation: animated 10s linear infinite;
+}
+.card {
+  width: 700px;
+  height: auto;
+  min-height: 660px;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  background-color: #f9fcfa;
+  -webkit-box-shadow: -1px 1px 15px 4px rgba(34, 60, 80, 0.4);
+  -moz-box-shadow: -1px 1px 15px 4px rgba(34, 60, 80, 0.4);
+  box-shadow: -1px 1px 15px 4px rgba(34, 60, 80, 0.671);
+  margin-top: 20px;
+}
+.card-head {
+  width: 100%;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+#profile_pic {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+}
+#main__pic {
+  width: 85%;
+  height: 90%;
+  border-radius: 8px;
+  -webkit-box-shadow: -1px 1px 15px 4px rgba(34, 60, 80, 0.4);
+  -moz-box-shadow: -1px 1px 15px 4px rgba(34, 60, 80, 0.4);
+  box-shadow: -1px 1px 15px 4px rgba(34, 60, 80, 0.681);
+  margin-top: 20px;
+}
+.name-adress {
+  display: flex;
+  flex-direction: column;
+  width: 280px;
+  height: 100%;
+  align-items: flex-start;
+  justify-content: space-evenly;
+  font-size: 20px;
+}
+.update-delete {
+  width: 150px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+.update-delete button {
+  width: 60px;
+  height: 40px;
+  border: none;
+  border-radius: 5px;
+  background-color: #7eabb7;
+}
+.img-post {
+  width: 100%;
+  height: 420px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.card-footer {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+.filter-comment {
+  width: 100%;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+.comm-like {
+  display: flex;
+  width: 10%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.izb {
+  width: 80%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+.like {
+  width: 90%;
+  height: 20px;
+}
+.details-card {
+  width: 93%;
+  height: auto;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+.main-modal2 {
+  position: fixed;
+  top: 0;
+  background-color: rgba(9, 9, 9, 0.534);
+  width: 100%;
+  height: 100%;
+  display: none;
+}
+.modal-push2 {
+  width: 25%;
+  height: 230px;
+  display: flex;
+  flex-direction: column;
+  margin: 200px auto 0;
+  background-color: #fefdfd;
+  border-radius: 10px;
+}
+.close-btn2 {
+  width: 100%;
+  height: 15%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid rgba(98, 98, 98, 0.711);
+}
+.close-btn2 div {
+  margin-right: 5px;
+}
+.info-push2 {
+  width: 100%;
+  height: 70%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+}
+.info-push2 input {
+  border-radius: 5px;
+}
+.save-btn2 {
+  width: 100%;
+  height: 15%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  border-top: 1px solid rgba(98, 98, 98, 0.711);
+}
+.save-btn2 button {
+  width: 20%;
+  height: 90%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #72c1d7;
+  border-radius: 5px;
+  margin-right: 10px;
+  border: none;
+}
+/* todo добавила пагинацию */
+#paginateBlock {
+  width: 100%;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  background: #eecda3;
+  background: -webkit-linear-gradient(to right, #ef629f, #9fccfa);
+  background: linear-gradient(to right, #ef629f, #9fccfa);
+  animation: animated 10s linear infinite;
+}
+.nextPost {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+#paginateNext {
+  background-image: url(https://icons.veryicon.com/png/o/miscellaneous/offerino-icons/arrow-up-45.png);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 60% 60%;
+  border: none;
+  background-color: white;
+}
+#paginatePrev {
+  background-image: url(https://upload.wikimedia.org/wikipedia/commons/9/9d/Arrow-down.svg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 60% 60%;
+  border: none;
+  background-color: white;
+}
+
+@media all and (max-width: 870px) {
+  .card {
+    width: 630px;
+    height: auto;
+    min-height: 530px;
+    border-radius: 9px;
+    display: flex;
+    flex-direction: column;
+    background-color: #f9fcfa;
+    margin-top: 15px;
+  }
+  .search-txt {
+    width: 0;
+  }
+  .filter {
+    width: 30%;
+  }
+  .search-box:hover > .search-txt {
+    width: 240px;
+    padding: 0 6px;
+  }
+  .search-box:hover > .search-btn {
+    background-color: #033723a3;
+  }
+}
+
+@media all and (max-width: 690px) {
+  .card {
+    width: 400px;
+    height: auto;
+    min-height: 300px;
+    border-radius: 7px;
+    display: flex;
+    flex-direction: column;
+    background-color: #f9fcfa;
+    margin-top: 15px;
+  }
+  #profile_pic {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+  }
+  .update-delete {
+    width: 100px;
+  }
+  .update-delete button {
+    width: 50px;
+  }
+  #main__pic {
+    width: 85%;
+    height: 60%;
+    border-radius: 8px;
+    -webkit-box-shadow: -1px 1px 15px 4px rgba(34, 60, 80, 0.4);
+    -moz-box-shadow: -1px 1px 15px 4px rgba(34, 60, 80, 0.4);
+    box-shadow: -1px 1px 15px 4px rgba(34, 60, 80, 0.681);
+    margin-top: 20px;
+  }
+}
+@media all and (max-width: 500px) {
+  .card {
+    width: 300px;
+    height: auto;
+    min-height: 200px;
+    border-radius: 7px;
+    display: flex;
+    flex-direction: column;
+    background-color: #f9fcfa;
+    margin-top: 15px;
+  }
+  #profile_pic {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+  }
+  .update-delete {
+    width: 100px;
+  }
+  .update-delete button {
+    width: 40%;
+  }
+  #main__pic {
+    width: 75%;
+    height: 55%;
+    border-radius: 8px;
+    -webkit-box-shadow: -1px 1px 15px 4px rgba(34, 60, 80, 0.4);
+    -moz-box-shadow: -1px 1px 15px 4px rgba(34, 60, 80, 0.4);
+    box-shadow: -1px 1px 15px 4px rgba(34, 60, 80, 0.681);
+    margin-top: 20px;
+  }
+  .img-post {
+    height: 390px;
+  }
 }

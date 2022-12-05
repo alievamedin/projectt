@@ -1,3 +1,12 @@
 {
-    
+  "posts": [
+    {
+      "status": "https://yt3.ggpht.com/ytc/AMLnZu9-LgELbaGCR96t3I8DaYUOi2YPzwPcTkfooMWb3Q=s900-c-k-c0x00ffffff-no-rj",
+      "name": "BILLIE ",
+      "adress": "NEW-YORK",
+      "mainImg": "https://content.api.news/v3/images/bin/5301afb4fb5a446b1a37fef88165d03e",
+      "details": "SMILE",
+      "id": 2
+    }
+  ]
 }
